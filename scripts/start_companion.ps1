@@ -2,9 +2,10 @@ Write-Host "============================================================" -Foreg
 Write-Host "         Starting Multimodal AI Companion System            " -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 
-$baseDir = "D:\AI ML Project"
+# Determine base directory (checks parent directory when running from scripts/)
+$baseDir = Split-Path $PSScriptRoot -Parent
 if (-not (Test-Path "$baseDir\backend\venv\Scripts\python.exe")) {
-    $baseDir = $PSScriptRoot
+    $baseDir = "D:\AI ML Project"
 }
 
 $backendDir = Join-Path $baseDir "backend"

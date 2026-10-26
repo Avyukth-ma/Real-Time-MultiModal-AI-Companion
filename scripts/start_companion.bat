@@ -7,8 +7,10 @@ echo.
 
 set "SCRIPT_DIR=%~dp0"
 
-:: Determine base directory (handles both D:\AI ML Project and workspace folder)
-if exist "%SCRIPT_DIR%backend\venv\Scripts\python.exe" (
+:: Determine base directory (checks parent directory when running from scripts/)
+if exist "%SCRIPT_DIR%..\backend\venv\Scripts\python.exe" (
+    set "BASE_DIR=%SCRIPT_DIR%..\"
+) else if exist "%SCRIPT_DIR%backend\venv\Scripts\python.exe" (
     set "BASE_DIR=%SCRIPT_DIR%"
 ) else if exist "D:\AI ML Project\backend\venv\Scripts\python.exe" (
     set "BASE_DIR=D:\AI ML Project\"
